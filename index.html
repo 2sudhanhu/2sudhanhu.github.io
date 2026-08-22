@@ -1,0 +1,1262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sudhanshu Tripathi — Senior Data Engineer in Hyderabad, India. Databricks, Generative AI and RAG, AWS data platforms, Terraform.">
+<meta name="author" content="Sudhanshu Tripathi">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Sudhanshu Tripathi — Senior Data Engineer">
+<meta property="og:description" content="Databricks, Generative AI and RAG, AWS data platforms, Terraform.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%230B0F16%22/><circle cx=%2232%22 cy=%2232%22 r=%228%22 fill=%22%23F1AE52%22/><circle cx=%2232%22 cy=%2232%22 r=%2219%22 fill=%22none%22 stroke=%22%23F1AE52%22 stroke-opacity=%22.45%22 stroke-width=%222%22/></svg>"><title>Sudhanshu Tripathi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap">
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Tokens — light is the base; dark redefines tokens only.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --ground:       #EDF0F5;
+  --ground-2:     #E3E8F0;
+  --surface:      #FFFFFF;
+  --surface-2:    #E2E7F0;
+  --ink:          #0E1420;
+  --ink-2:        #46546A;
+  --ink-3:        #79859A;
+  --rule:         #D4DBE7;
+  --rule-2:       #BDC7D8;
+  --accent:       #9A5006;
+  --accent-bright:#E09627;
+  --accent-soft:  #FAEEDA;
+  --dot:          121, 133, 154;
+  --dot-hi:       224, 150, 39;
+  --edge:         .085;
+  --grain:        .030;
+  --bloom:        .16;
+  --field-op:     .9;
+  --lift:         0 1px 2px rgba(14,20,32,.05), 0 18px 40px -26px rgba(14,20,32,.42);
+
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-prose:   "Newsreader", Georgia, "Times New Roman", serif;
+  --f-mono:    "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  --gutter: 168px;
+  --measure: 66ch;
+  --ease: cubic-bezier(.22,.68,.14,1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:       #090D14;
+    --ground-2:     #0D131C;
+    --surface:      #131A26;
+    --surface-2:    #1A2331;
+    --ink:          #EAEFF7;
+    --ink-2:        #A4B0C4;
+    --ink-3:        #6E7B90;
+    --rule:         #1F2836;
+    --rule-2:       #313D4E;
+    --accent:       #F2B155;
+    --accent-bright:#FFC978;
+    --accent-soft:  #241A0D;
+    --dot:          112, 126, 148;
+    --dot-hi:       255, 201, 120;
+    --edge:         .10;
+    --grain:        .042;
+    --bloom:        .26;
+    --field-op:     1;
+    --lift:         0 1px 2px rgba(0,0,0,.5), 0 18px 40px -26px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:       #090D14;
+  --ground-2:     #0D131C;
+  --surface:      #131A26;
+  --surface-2:    #1A2331;
+  --ink:          #EAEFF7;
+  --ink-2:        #A4B0C4;
+  --ink-3:        #6E7B90;
+  --rule:         #1F2836;
+  --rule-2:       #313D4E;
+  --accent:       #F2B155;
+  --accent-bright:#FFC978;
+  --accent-soft:  #241A0D;
+  --dot:          112, 126, 148;
+  --dot-hi:       255, 201, 120;
+  --edge:         .10;
+  --grain:        .042;
+  --bloom:        .26;
+  --field-op:     1;
+  --lift:         0 1px 2px rgba(0,0,0,.5), 0 18px 40px -26px rgba(0,0,0,.9);
+}
+
+/* ───────────────────────────── base ───────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-variation-settings: "wdth" 100;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* tactile grain — keeps the flat fields from reading as plastic */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 999;
+  pointer-events: none;
+  opacity: var(--grain);
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap { width: min(1120px, 100% - 3rem); margin-inline: auto; }
+@media (max-width: 640px) { .wrap { width: min(1120px, 100% - 2rem); } }
+
+.mono {
+  font-family: var(--f-mono);
+  font-size: .6875rem; font-weight: 500;
+  letter-spacing: .13em; text-transform: uppercase;
+}
+
+.prose {
+  font-family: var(--f-prose);
+  font-optical-sizing: auto;
+  font-size: 1.0625rem; line-height: 1.64;
+  color: var(--ink-2); max-width: var(--measure);
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--surface); color: var(--ink);
+  padding: .7rem 1rem; z-index: 1000; border: 1px solid var(--rule-2);
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* ───────────────────────────── top bar ───────────────────────────── */
+.bar {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  background: color-mix(in srgb, var(--ground) 86%, transparent);
+  backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom: 1px solid var(--rule);
+  transform: translateY(-104%);
+  transition: transform .38s var(--ease);
+}
+.bar.show { transform: none; }
+.bar-in { display: flex; align-items: center; gap: 1.5rem; height: 58px; }
+.bar-name {
+  font-variation-settings: "wdth" 112;
+  font-weight: 700; font-size: .95rem; letter-spacing: -.005em;
+  margin-right: auto; white-space: nowrap;
+}
+.bar-nav { display: flex; gap: 1.4rem; }
+.bar-nav a {
+  text-decoration: none; color: var(--ink-3);
+  position: relative; padding-block: .25rem;
+  transition: color .2s var(--ease);
+}
+.bar-nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s var(--ease);
+}
+.bar-nav a:hover { color: var(--ink); }
+.bar-nav a:hover::after { transform: scaleX(1); }
+@media (max-width: 900px) { .bar-nav { display: none; } }
+
+#progress {
+  position: absolute; left: 0; bottom: -1px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  width: 0%;
+}
+
+/* ───────────────────────────── hero ───────────────────────────── */
+.hero {
+  position: relative;
+  min-height: min(96vh, 900px);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 8rem 0 3.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(76% 58% at 72% 22%, color-mix(in srgb, var(--accent-bright) calc(var(--bloom) * 100%), transparent) 0%, transparent 62%),
+    linear-gradient(180deg, var(--ground-2) 0%, var(--ground) 68%);
+}
+#field {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: var(--field-op);
+  -webkit-mask-image: radial-gradient(118% 90% at 64% 32%, #000 30%, transparent 80%);
+          mask-image: radial-gradient(118% 90% at 64% 32%, #000 30%, transparent 80%);
+  pointer-events: none;
+}
+.hero-in { position: relative; z-index: 1; }
+
+.eyebrow {
+  display: flex; align-items: center; gap: .7rem;
+  color: var(--ink-3); margin-bottom: 1.7rem;
+}
+.eyebrow .pip {
+  width: 7px; height: 7px; border-radius: 50%; flex: none;
+  background: var(--accent-bright);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-bright) 18%, transparent);
+  animation: beat 3.4s ease-in-out infinite;
+}
+@keyframes beat {
+  0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-bright) 18%, transparent); }
+  50%      { box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent-bright) 5%, transparent); }
+}
+
+h1.name {
+  font-size: clamp(3rem, 9.6vw, 6.6rem);
+  font-variation-settings: "wdth" 118;
+  font-weight: 700;
+  letter-spacing: -.032em;
+  line-height: .9;
+  margin: 0 0 1.35rem;
+}
+h1.name .ln { display: block; overflow: hidden; }
+h1.name .ln > span {
+  display: block;
+  transform: translateY(102%);
+  animation: unveil .95s var(--ease) forwards;
+}
+h1.name .ln:nth-child(2) > span { animation-delay: .1s; }
+@keyframes unveil { to { transform: none; } }
+
+.tagline {
+  font-family: var(--f-prose);
+  font-optical-sizing: auto;
+  font-size: clamp(1.14rem, 2.3vw, 1.55rem);
+  line-height: 1.44; font-weight: 400;
+  color: var(--ink-2); max-width: 35ch;
+  margin: 0 0 2.7rem; text-wrap: balance;
+}
+.tagline em {
+  font-style: italic;
+  color: var(--ink);
+  box-shadow: inset 0 -.42em 0 var(--accent-soft);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 3.1rem; }
+
+.btn {
+  font-family: var(--f-mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .82rem 1.2rem;
+  border: 1px solid var(--rule-2);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--ink); text-decoration: none; border-radius: 2px;
+  cursor: pointer; display: inline-flex; align-items: center; gap: .55rem;
+  transition: border-color .22s var(--ease), background .22s var(--ease),
+              color .22s var(--ease), transform .22s var(--ease);
+}
+.btn:hover { border-color: var(--ink-3); transform: translateY(-1px); }
+.btn-primary { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: #100D08; }
+.btn .arw { transition: transform .22s var(--ease); }
+.btn:hover .arw { transform: translateX(3px); }
+
+/* facts strip */
+.facts {
+  display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+  border-top: 1px solid var(--rule-2);
+}
+.fact { padding: 1.35rem 1.25rem 0 0; position: relative; }
+.fact + .fact { border-left: 1px solid var(--rule); padding-left: 1.25rem; }
+.fact::before {
+  content: ""; position: absolute; top: -1px; left: 0; width: 26px; height: 2px;
+  background: var(--accent);
+}
+.fact + .fact::before { left: 1.25rem; }
+.fact-n {
+  font-variation-settings: "wdth" 108;
+  font-weight: 700; font-size: clamp(1.6rem, 3.8vw, 2.3rem);
+  letter-spacing: -.024em; font-variant-numeric: tabular-nums;
+  line-height: 1; margin-bottom: .5rem;
+}
+.fact-l { color: var(--ink-3); line-height: 1.5; }
+@media (max-width: 700px) {
+  .facts { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .fact:nth-child(3) { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); margin-top: 1.1rem; }
+  .fact:nth-child(4) { border-top: 1px solid var(--rule); margin-top: 1.1rem; }
+  .fact:nth-child(3)::before, .fact:nth-child(4)::before { display: none; }
+}
+
+/* ───────────────────────────── sections ───────────────────────────── */
+section.block {
+  display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr);
+  gap: 0 2.5rem; padding: 5.25rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+section.block:last-of-type { border-bottom: 0; }
+
+.gutter { position: relative; }
+.gutter-sticky { position: sticky; top: 88px; }
+.gutter .lbl {
+  color: var(--ink-3); display: block; margin-bottom: .6rem;
+  padding-top: .55rem; border-top: 2px solid var(--accent);
+  width: 26px; white-space: nowrap;
+}
+.gutter .cnt {
+  font-family: var(--f-mono); font-size: .6875rem;
+  color: var(--ink-3); font-variant-numeric: tabular-nums;
+  display: block; margin-top: .35rem;
+}
+
+h2.head {
+  font-size: clamp(1.5rem, 3.1vw, 2.1rem);
+  font-variation-settings: "wdth" 112;
+  font-weight: 700; letter-spacing: -.024em; line-height: 1.1;
+  margin: 0 0 1.6rem; text-wrap: balance;
+}
+
+@media (max-width: 900px) {
+  section.block { grid-template-columns: 1fr; gap: 0; padding: 3.75rem 0; }
+  .gutter { margin-bottom: 1.3rem; }
+  .gutter-sticky { position: static; }
+  .gutter .lbl { width: auto; display: inline-block; }
+  .gutter .cnt { display: inline; margin-left: .7rem; }
+}
+
+/* ───────────────────────────── work ───────────────────────────── */
+.projects { display: flex; flex-direction: column; gap: .4rem; }
+
+.proj {
+  position: relative;
+  padding: 1.6rem 1.5rem 1.6rem 1.6rem;
+  display: grid; grid-template-columns: minmax(0,1fr) auto;
+  gap: .35rem 1.5rem; align-items: start;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+}
+.proj::before {
+  content: ""; position: absolute; left: 0; top: 1.6rem; bottom: 1.6rem;
+  width: 2px; background: var(--accent);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform .38s var(--ease);
+}
+.proj::after {
+  content: ""; position: absolute; left: 1.6rem; right: 1.5rem; top: -.2rem;
+  height: 1px; background: var(--rule);
+}
+.proj:first-child::after { display: none; }
+.proj:hover {
+  background: color-mix(in srgb, var(--surface) 62%, transparent);
+  border-color: var(--rule);
+  transform: translateX(2px);
+}
+.proj:hover::before { transform: scaleY(1); }
+
+.proj-t {
+  grid-column: 1;
+  font-size: 1.2rem; font-weight: 600;
+  font-variation-settings: "wdth" 104;
+  letter-spacing: -.014em; line-height: 1.24;
+  margin: 0 0 .55rem; text-wrap: balance;
+}
+.proj-tag {
+  grid-column: 2; grid-row: 1;
+  font-family: var(--f-mono); font-size: .625rem; font-weight: 500;
+  letter-spacing: .11em; text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--accent-soft);
+  padding: .32rem .52rem; border-radius: 2px; white-space: nowrap;
+}
+.proj-d { grid-column: 1 / -1; margin: 0 0 .9rem; }
+.stack {
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap; gap: .32rem .45rem;
+  list-style: none; margin: 0; padding: 0;
+}
+.stack li {
+  font-family: var(--f-mono); font-size: .6875rem;
+  color: var(--ink-2); background: var(--surface-2);
+  padding: .24rem .52rem; border-radius: 2px; white-space: nowrap;
+  transition: color .25s var(--ease), background .25s var(--ease);
+}
+.proj:hover .stack li { color: var(--ink); }
+
+
+@media (max-width: 560px) {
+  .proj { grid-template-columns: 1fr; padding-inline: 1rem; }
+  .proj::after { left: 1rem; right: 1rem; }
+  .proj-tag { grid-column: 1; grid-row: auto; justify-self: start; order: -1; margin-bottom: .6rem; }
+}
+
+/* ───────────────────────────── experience ───────────────────────────── */
+.roles { display: flex; flex-direction: column; }
+.role { border-top: 1px solid var(--rule); padding: 1.8rem 0; }
+.role:first-child { border-top: 0; padding-top: 0; }
+.role-h {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1.5rem; flex-wrap: wrap; margin-bottom: .2rem;
+}
+.role-co {
+  font-size: 1.2rem; font-weight: 600;
+  font-variation-settings: "wdth" 104; letter-spacing: -.014em;
+}
+.role-dt {
+  font-family: var(--f-mono); font-size: .6875rem; font-weight: 500;
+  letter-spacing: .06em; color: var(--accent);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.role-sub {
+  font-family: var(--f-mono); font-size: .6875rem;
+  color: var(--ink-3); letter-spacing: .04em; margin-bottom: .95rem;
+}
+ul.bul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: .58rem;
+  max-width: var(--measure);
+}
+ul.bul li {
+  position: relative; padding-left: 1.15rem;
+  font-family: var(--f-prose); font-optical-sizing: auto;
+  font-size: 1.0125rem; line-height: 1.58; color: var(--ink-2);
+}
+ul.bul li::before {
+  content: ""; position: absolute; left: 0; top: .64em;
+  width: 6px; height: 1px; background: var(--rule-2);
+}
+
+/* ───────────────────────────── skills ───────────────────────────── */
+.skills { display: flex; flex-direction: column; }
+.skill {
+  display: grid; grid-template-columns: 190px minmax(0,1fr);
+  gap: .5rem 1.5rem; padding: 1.1rem 0;
+  border-top: 1px solid var(--rule); align-items: baseline;
+  transition: border-color .25s var(--ease);
+}
+.skill:first-child { border-top: 0; padding-top: 0; }
+.skill:hover { border-color: var(--rule-2); }
+.skill-k { color: var(--ink); }
+.skill-v {
+  font-family: var(--f-prose); font-optical-sizing: auto;
+  font-size: 1rem; line-height: 1.56; color: var(--ink-2);
+}
+@media (max-width: 620px) { .skill { grid-template-columns: 1fr; } }
+
+/* ───────────────────────────── credentials ───────────────────────────── */
+.creds {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 2px; overflow: hidden;
+}
+.cred {
+  background: var(--ground); padding: 1.4rem;
+  transition: background .3s var(--ease);
+}
+.cred:hover { background: color-mix(in srgb, var(--surface) 55%, var(--ground)); }
+.cred-k {
+  color: var(--ink-3); margin-bottom: .85rem; display: inline-block;
+  padding-top: .5rem; border-top: 2px solid var(--accent);
+}
+.cred p {
+  margin: 0 0 .7rem; font-family: var(--f-prose); font-optical-sizing: auto;
+  font-size: .98rem; line-height: 1.5; color: var(--ink-2);
+}
+.cred p:last-child { margin-bottom: 0; }
+.cred .sep { border-top: 1px solid var(--rule); padding-top: .8rem; margin-top: .15rem; }
+.cred b {
+  color: var(--ink); font-family: var(--f-display);
+  font-weight: 600; font-size: .94rem;
+}
+
+/* ───────────────────────────── contact ───────────────────────────── */
+.contact-lines {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--rule); max-width: var(--measure);
+}
+.cline {
+  display: grid; grid-template-columns: 118px minmax(0,1fr) auto;
+  gap: 1rem; align-items: baseline;
+  padding: .95rem 0; border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  transition: padding-left .28s var(--ease);
+}
+.cline span.k { color: var(--ink-3); }
+.cline span.v {
+  font-variation-settings: "wdth" 102;
+  font-size: 1rem; color: var(--ink); overflow-wrap: anywhere;
+  transition: color .22s var(--ease);
+}
+.cline span.go {
+  font-family: var(--f-mono); font-size: .8rem; color: var(--accent);
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity .28s var(--ease), transform .28s var(--ease);
+}
+a.cline:hover { padding-left: .5rem; }
+a.cline:hover span.v { color: var(--accent); }
+a.cline:hover span.go { opacity: 1; transform: none; }
+
+.proj-link {
+  grid-column: 1 / -1; justify-self: start; margin-top: .95rem;
+  font-family: var(--f-mono); font-size: .6875rem; font-weight: 500;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding-bottom: .18rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  transition: border-color .22s var(--ease);
+}
+.proj-link:hover { border-bottom-color: var(--accent); }
+.proj-link .ext { transition: transform .22s var(--ease); }
+.proj-link:hover .ext { transform: translate(2px, -2px); }
+
+/* ───────────────────────────── writing ───────────────────────────── */
+.writing { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+.wrow {
+  display: grid; grid-template-columns: minmax(0,1fr) auto auto;
+  gap: .3rem 1.25rem; align-items: baseline;
+  padding: 1.1rem 0; border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  transition: padding-left .28s var(--ease);
+}
+.wrow:hover { padding-left: .5rem; }
+.wtitle {
+  font-size: 1.02rem; font-weight: 600;
+  font-variation-settings: "wdth" 104; letter-spacing: -.01em;
+  color: var(--ink); line-height: 1.32;
+  transition: color .22s var(--ease);
+}
+.wrow:hover .wtitle { color: var(--accent); }
+.wmeta { color: var(--ink-3); white-space: nowrap; }
+.wgo {
+  font-family: var(--f-mono); font-size: .8rem; color: var(--accent);
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity .28s var(--ease), transform .28s var(--ease);
+}
+.wrow:hover .wgo { opacity: 1; transform: none; }
+@media (max-width: 700px) {
+  .wrow { grid-template-columns: minmax(0,1fr) auto; }
+  .wmeta { grid-column: 1 / -1; white-space: normal; }
+}
+
+footer {
+  padding: 2.75rem 0 3.75rem; color: var(--ink-3);
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  border-top: 1px solid var(--rule);
+}
+
+/* ───────────────────────────── motion ───────────────────────────── */
+.rise { opacity: 0; transform: translateY(16px); }
+.rise.in {
+  opacity: 1; transform: none;
+  transition: opacity .68s var(--ease), transform .68s var(--ease);
+}
+.lift { opacity: 0; transform: translateY(18px); animation: lift .82s var(--ease) forwards; }
+@keyframes lift { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .rise { opacity: 1; transform: none; }
+  .lift { opacity: 1; transform: none; animation: none; }
+  h1.name .ln > span { transform: none; animation: none; }
+  .bar { transition: none; }
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="bar" id="bar">
+  <div class="wrap bar-in">
+    <span class="bar-name">Sudhanshu Tripathi</span>
+    <nav class="bar-nav mono" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#writing">Writing</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="mailto:sudhanshutripathi541998@gmail.com?subject=R%C3%A9sum%C3%A9%20request">Résumé</a>
+  </div>
+  <div id="progress"></div>
+</div>
+
+<header class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="eyebrow mono lift" style="animation-delay:.05s">
+      <span class="pip"></span>
+      <span>Senior Data Engineer · Hyderabad, India</span>
+    </div>
+
+    <h1 class="name">
+      <span class="ln"><span>Sudhanshu</span></span>
+      <span class="ln"><span>Tripathi</span></span>
+    </h1>
+
+    <p class="tagline lift" style="animation-delay:.42s">
+      I build the <em>data platforms</em> that enterprise AI runs on — lakehouses, retrieval, governance, and the pipelines underneath.
+    </p>
+
+    <div class="actions lift" style="animation-delay:.50s">
+      <a class="btn btn-primary" href="#work">Selected work <span class="arw">→</span></a>
+      <a class="btn" href="mailto:sudhanshutripathi541998@gmail.com">Get in touch</a>
+      <a class="btn" href="https://www.linkedin.com/in/mr-sudhanshu-tripathi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+
+    <div class="facts lift" style="animation-delay:.58s">
+      <div class="fact">
+        <div class="fact-n">6+</div>
+        <div class="fact-l mono">Years building<br>data platforms</div>
+      </div>
+      <div class="fact">
+        <div class="fact-n">270+</div>
+        <div class="fact-l mono">Source tables<br>into one mesh</div>
+      </div>
+      <div class="fact">
+        <div class="fact-n">6</div>
+        <div class="fact-l mono">GenAI &amp; platform<br>builds shipped</div>
+      </div>
+      <div class="fact">
+        <div class="fact-n">3</div>
+        <div class="fact-l mono">Professional<br>certifications</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- ── About ─────────────────────────────────────────────── -->
+    <section class="block" id="about">
+      <div class="gutter"><div class="gutter-sticky"><span class="lbl mono">Profile</span></div></div>
+      <div class="rise">
+        <h2 class="head">Bridging data engineering and AI-driven outcomes.</h2>
+        <p class="prose">
+          Senior Data Engineer with six years of experience building cloud data platforms and,
+          more recently, production-grade Generative AI solutions on Databricks and AWS. My recent
+          work spans enterprise Retrieval-Augmented Generation, data governance automation, and
+          real-time streaming integration. Earlier, I architected a Terraform-provisioned AWS Data
+          Lake and Data Mesh integrating more than 270 source tables across analytics domains.
+        </p>
+        <p class="prose" style="margin-top:1rem">
+          What I care about is the gap between a promising proof-of-concept and something an
+          organisation can actually depend on: retrieval that grounds its answers, metadata that
+          stays trustworthy, infrastructure that reproduces from code. I enjoy taking emerging
+          technology apart, evaluating it rigorously, and turning the findings into recommendations
+          engineering leadership can act on.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Work ──────────────────────────────────────────────── -->
+    <section class="block" id="work">
+      <div class="gutter"><div class="gutter-sticky">
+        <span class="lbl mono">Work</span>
+        <span class="cnt">Eight selected</span>
+      </div></div>
+      <div class="rise">
+        <h2 class="head">Things I designed, built, and put in front of people.</h2>
+        <div class="projects">
+
+          <article class="proj">
+            <h3 class="proj-t">Enterprise Retrieval-Augmented Generation platform</h3>
+            <span class="proj-tag">Generative AI</span>
+            <p class="proj-d prose">
+              Designed and implemented an enterprise RAG solution on Databricks using Vector Search Index,
+              embeddings, and Foundation Models, delivering a working chatbot for knowledge discovery and
+              question answering. I worked through document ingestion, retrieval accuracy, and context
+              grounding, then packaged the architecture into a reusable template so other engineering teams
+              could stand up a new RAG use case in under one sprint instead of rebuilding it from scratch.
+            </p>
+            <ul class="stack">
+              <li>Databricks Vector Search</li><li>Foundation Models</li><li>Embeddings</li>
+              <li>Semantic search</li><li>Python</li><li>Context grounding</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">AWS Data Lake &amp; Data Mesh, provisioned entirely in Terraform</h3>
+            <span class="proj-tag">Platform</span>
+            <p class="proj-d prose">
+              Architected and implemented an AWS-based Data Lake and Data Mesh using Terraform, AWS Glue,
+              Athena, and S3, integrating 270+ tables from a mix of enterprise sources including SAP HANA,
+              Snowflake, and Oracle. I tuned partitioning and query performance for complex analytical
+              workloads, automated the ETL/ELT layer in Python and PySpark, and standardised provisioning
+              through CI/CD with Terraform and Azure DevOps.
+            </p>
+            <ul class="stack">
+              <li>Terraform</li><li>AWS Glue</li><li>Athena</li><li>S3</li>
+              <li>PySpark</li><li>SAP HANA</li><li>Snowflake</li><li>Azure DevOps</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Benchmarking methodology for operational lakehouse workloads</h3>
+            <span class="proj-tag">Operational Data</span>
+            <p class="proj-d prose">
+              Built a reproducible benchmarking methodology for operational database workloads on modern
+              lakehouse platforms, covering workload-fit analysis, scalability and load testing, and
+              total-cost modelling. The emphasis was on making the evaluation repeatable and evidence-based
+              rather than anecdotal, so the trade-offs could be presented clearly to engineering leadership.
+            </p>
+            <ul class="stack">
+              <li>Benchmark design</li><li>Load testing</li><li>Scalability analysis</li>
+              <li>Cost modelling</li><li>Lakehouse</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Real-time streaming integration with Kafka and MongoDB Atlas</h3>
+            <span class="proj-tag">Streaming</span>
+            <p class="proj-d prose">
+              Delivered real-time streaming integration using Amazon MSK (Kafka) connectors with
+              MongoDB Atlas, enabling scalable event-driven ingestion and reliable connectivity between
+              operational applications and downstream data platforms.
+            </p>
+            <ul class="stack">
+              <li>Amazon MSK</li><li>Apache Kafka</li><li>MongoDB Atlas</li>
+              <li>Kafka Connect</li><li>Event-driven ingestion</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Evaluation framework for conversational analytics tooling</h3>
+            <span class="proj-tag">Conversational AI</span>
+            <p class="proj-d prose">
+              Designed and ran a structured evaluation framework for conversational AI and self-service
+              analytics tooling across structured and unstructured data — defining test scenarios, measuring
+              answer quality and retrieval behaviour, and assessing operational fit. The deliverable was a
+              repeatable decision framework other teams could apply to their own use cases.
+            </p>
+            <ul class="stack">
+              <li>Evaluation design</li><li>Conversational AI</li><li>Self-service analytics</li>
+              <li>Test scenarios</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Metadata &amp; governance automation</h3>
+            <span class="proj-tag">Data Governance</span>
+            <p class="proj-d prose">
+              Automation work across metadata and data governance workflows, with human review retained
+              at the approval step. I also built the front-end review interface.
+            </p>
+            <ul class="stack">
+              <li>Data governance</li><li>Metadata management</li><li>UI development</li><li>Python</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Serverless AWS stack provisioned in modular Terraform</h3>
+            <span class="proj-tag">Infrastructure as Code</span>
+            <p class="proj-d prose">
+              A Terraform project standing up a Python Lambda function together with its S3 bucket,
+              CloudWatch log group, and IAM roles — separated into distinct modules for compute,
+              storage, logging, and permissions, with variables and outputs factored out rather than
+              inlined. Modest in scope, but laid out the way an infrastructure repository should be.
+            </p>
+            <ul class="stack">
+              <li>Terraform</li><li>HCL</li><li>AWS Lambda</li><li>S3</li>
+              <li>CloudWatch</li><li>IAM</li><li>Python</li>
+            </ul>
+            <a class="proj-link" href="https://github.com/2sudhanhu/aws-lambda-function" target="_blank" rel="noopener noreferrer">View on GitHub <span class="ext">&#8599;</span></a>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Distributed Jenkins CI/CD across master and agent nodes</h3>
+            <span class="proj-tag">CI/CD</span>
+            <p class="proj-d prose">
+              A distributed Jenkins setup on EC2 — a master node coordinating jobs and an agent node
+              running the builds, connected over SSH, with shell scripts provisioning each side on
+              RHEL 8, Amazon Linux 2, CentOS, and Fedora. A GitHub webhook fires the Groovy pipeline
+              on push, so a commit deploys to the agent&#8217;s HTTPD server without anyone pressing a
+              button.
+            </p>
+            <ul class="stack">
+              <li>Jenkins</li><li>Groovy</li><li>Shell</li><li>AWS EC2</li>
+              <li>GitHub webhooks</li><li>HTTPD</li><li>SSH</li>
+            </ul>
+            <a class="proj-link" href="https://github.com/2sudhanhu/Jenkins-Intergration-with-weebhooks" target="_blank" rel="noopener noreferrer">View on GitHub <span class="ext">&#8599;</span></a>
+          </article>
+
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Experience ────────────────────────────────────────── -->
+    <section class="block" id="experience">
+      <div class="gutter"><div class="gutter-sticky">
+        <span class="lbl mono">Career</span>
+        <span class="cnt">2020 →</span>
+      </div></div>
+      <div class="rise">
+        <h2 class="head">Where I've worked.</h2>
+        <div class="roles">
+
+          <div class="role">
+            <div class="role-h">
+              <span class="role-co">Evernorth Health Services <span style="color:var(--ink-3);font-weight:400">(The Cigna Group)</span></span>
+              <span class="role-dt">Apr 2025 — Present</span>
+            </div>
+            <div class="role-sub">Senior Data Engineer, Innovation · Hyderabad, India · Hybrid</div>
+            <ul class="bul">
+              <li>Design and implement Generative AI and data platform solutions on Databricks and AWS, spanning retrieval systems, evaluation frameworks, and streaming integration.</li>
+              <li>Delivered an enterprise Retrieval-Augmented Generation solution using Vector Search Index, embeddings, and Foundation Models, and packaged it into a reusable template so other teams can launch new use cases in under one sprint.</li>
+              <li>Developed a reproducible benchmarking methodology for operational database workloads on lakehouse platforms — workload fit, scalability, and cost modelling — and presented the trade-offs to engineering leadership.</li>
+              <li>Designed structured evaluation frameworks for conversational AI and self-service analytics tooling across structured and unstructured data, focused on answer quality, operational fit, and reusability.</li>
+              <li>Delivered real-time streaming integration using Amazon MSK (Kafka) connectors with MongoDB Atlas, enabling scalable event-driven ingestion into modern data platforms.</li>
+              <li>Contributed to metadata and data governance automation, with human review retained at the approval step.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-h">
+              <span class="role-co">Accenture</span>
+              <span class="role-dt">Jul 2021 — Apr 2025</span>
+            </div>
+            <div class="role-sub">Data &amp; DevOps Engineer · Gurugram, India · Remote</div>
+            <ul class="bul">
+              <li>Architected and implemented an AWS-based Data Lake and Data Mesh platform using Terraform, AWS Glue, Athena, and S3, improving data processing efficiency across analytics domains.</li>
+              <li>Integrated 270+ tables from enterprise sources including SAP HANA, Snowflake, and Oracle, optimising partitioning and query performance for complex analytical workloads.</li>
+              <li>Developed automated ETL/ELT pipelines in Python, PySpark, and Shell scripting, improving data quality and reducing manual intervention.</li>
+              <li>Led DevOps initiatives implementing CI/CD workflows with Terraform and Azure DevOps to standardise infrastructure provisioning and release management.</li>
+              <li>Trained engineering teams on building Data Lakes with Infrastructure as Code, troubleshooting, and cost and performance optimisation.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-h">
+              <span class="role-co">Cerebrone &amp; others</span>
+              <span class="role-dt">Oct 2020 — Jul 2021</span>
+            </div>
+            <div class="role-sub">Cloud &amp; DevOps Engineer · Remote</div>
+            <ul class="bul">
+              <li>Built and managed AWS and GCP environments (EC2, IAM, VPC, S3, Lambda, CloudFront, Route 53) and orchestrated containers with Kubernetes, Docker, and Amazon ECS to improve deployment efficiency.</li>
+              <li>Set up Prometheus and Grafana monitoring for real-time application and infrastructure health, and administered Linux servers covering DNS, SSL, Apache, PHP, and MySQL.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Writing ───────────────────────────────────────────── -->
+    <section class="block" id="writing">
+      <div class="gutter"><div class="gutter-sticky">
+        <span class="lbl mono">Writing</span>
+        <span class="cnt">Five write-ups</span>
+      </div></div>
+      <div class="rise">
+        <h2 class="head">Build walkthroughs, written so someone else could follow them.</h2>
+        <p class="prose" style="margin-bottom:1.9rem">
+          Early-career pieces documenting cloud infrastructure builds step by step, from
+          provisioning through teardown. Published on LinkedIn and GitHub.
+        </p>
+        <div class="writing">
+          <a class="wrow" href="https://www.linkedin.com/pulse/task-2-sudhanshu-tripathi/" target="_blank" rel="noopener noreferrer">
+            <span class="wtitle">A Terraform-provisioned web stack on EC2, EFS, S3, and CloudFront</span>
+            <span class="wmeta mono">Terraform &#183; EFS &#183; CloudFront</span>
+            <span class="wgo">&#8599;</span>
+          </a>
+          <a class="wrow" href="https://www.linkedin.com/pulse/elastic-kubernetes-services-task-sudhanshu-tripathi/" target="_blank" rel="noopener noreferrer">
+            <span class="wtitle">WordPress on Amazon EKS with EFS-backed persistent storage</span>
+            <span class="wmeta mono">EKS &#183; Kubernetes &#183; eksctl</span>
+            <span class="wgo">&#8599;</span>
+          </a>
+          <a class="wrow" href="https://www.linkedin.com/pulse/arth-task-3-sudhanshu-tripathi/" target="_blank" rel="noopener noreferrer">
+            <span class="wtitle">Provisioning AWS infrastructure entirely from the command line</span>
+            <span class="wmeta mono">AWS CLI &#183; IAM &#183; EC2 &#183; EBS</span>
+            <span class="wgo">&#8599;</span>
+          </a>
+          <a class="wrow" href="https://www.linkedin.com/pulse/big-data-change-sudhanshu-tripathi/" target="_blank" rel="noopener noreferrer">
+            <span class="wtitle">Big data, the four V&#8217;s, and how Hadoop answers them</span>
+            <span class="wmeta mono">Hadoop &#183; HDFS &#183; MapReduce</span>
+            <span class="wgo">&#8599;</span>
+          </a>
+          <a class="wrow" href="https://github.com/2sudhanhu/KOps" target="_blank" rel="noopener noreferrer">
+            <span class="wtitle">Standing up a highly available Kubernetes cluster on AWS with KOps</span>
+            <span class="wmeta mono">KOps &#183; Kubernetes &#183; Route 53</span>
+            <span class="wgo">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- ── Capabilities ──────────────────────────────────────── -->
+    <section class="block" id="capabilities">
+      <div class="gutter"><div class="gutter-sticky"><span class="lbl mono">Stack</span></div></div>
+      <div class="rise">
+        <h2 class="head">What I work with.</h2>
+        <div class="skills">
+          <div class="skill">
+            <div class="skill-k mono">Data &amp; AI platforms</div>
+            <div class="skill-v">Databricks — Lakehouse, Delta Lake, Vector Search Index, Foundation Models · Snowflake · Amazon Redshift</div>
+          </div>
+          <div class="skill">
+            <div class="skill-k mono">Generative AI</div>
+            <div class="skill-v">Retrieval-Augmented Generation · LLMs · Embeddings · Semantic search · Context grounding · AI agents · Conversational AI · Chatbots</div>
+          </div>
+          <div class="skill">
+            <div class="skill-k mono">Cloud</div>
+            <div class="skill-v">AWS — Glue, Athena, S3, Lambda, EC2, IAM, VPC, MSK/Kafka, ECS, CloudFront, Route 53, QuickSight · Azure DevOps · GCP</div>
+          </div>
+          <div class="skill">
+            <div class="skill-k mono">Data engineering</div>
+            <div class="skill-v">ETL/ELT pipelines · Data Lake · Data Mesh · Data warehousing · Batch &amp; real-time streaming · Apache Kafka · Data modelling · Performance tuning</div>
+          </div>
+          <div class="skill">
+            <div class="skill-k mono">Data governance</div>
+            <div class="skill-v">Metadata management · Data cataloging · Classification · Data quality rules · Stewardship workflows · Compliance</div>
+          </div>
+          <div class="skill">
+            <div class="skill-k mono">Languages &amp; databases</div>
+            <div class="skill-v">Python · SQL · PySpark · Shell scripting · MongoDB &amp; MongoDB Atlas · Oracle · SAP HANA</div>
+          </div>
+          <div class="skill">
+            <div class="skill-k mono">DevOps &amp; practices</div>
+            <div class="skill-v">Terraform · Infrastructure as Code · CI/CD · Git · Kubernetes · Docker · Prometheus · Grafana · Linux · Monitoring · Security · Agile/Scrum</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Credentials ───────────────────────────────────────── -->
+    <section class="block" id="credentials">
+      <div class="gutter"><div class="gutter-sticky">
+        <span class="lbl mono">Credentials</span>
+        <span class="cnt">Three certifications</span>
+      </div></div>
+      <div class="rise">
+        <h2 class="head">Certifications, education, recognition.</h2>
+        <div class="creds">
+          <div class="cred">
+            <span class="cred-k mono">Certifications</span>
+            <p><b>AWS Certified Solutions Architect — Associate</b><br>Amazon Web Services</p>
+            <p><b>HashiCorp Certified: Terraform Associate (003)</b><br>HashiCorp · Apr 2025</p>
+            <p><b>Google Digital Marketing Certification</b><br>Google</p>
+          </div>
+          <div class="cred">
+            <span class="cred-k mono">Education</span>
+            <p><b>Master of Technology in Computer Science &amp; Engineering</b><br>MIT, Bhopal</p>
+            <p>Graduated 2025 · CGPA 8.2 / 10</p>
+            <p class="sep"><b>Bachelor of Technology in Computer Science &amp; Engineering</b><br>School of Research and Technology,<br>People's University, Bhopal</p>
+            <p>2016 – 2020 · CGPA 7.72 / 10</p>
+          </div>
+          <div class="cred">
+            <span class="cred-k mono">Recognition</span>
+            <p><b>Outstanding Efforts Award</b><br>Accenture — for implementing groundbreaking solutions within AWS</p>
+            <p><b>Exemplify Client-Centricity Award</b><br>Accenture — for Client Value Creation</p>
+            <p><b>1st Position, Science Fair 2019</b><br>Portable ECG and pulse oximeter device</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ───────────────────────────────────────────── -->
+    <section class="block" id="contact">
+      <div class="gutter"><div class="gutter-sticky"><span class="lbl mono">Contact</span></div></div>
+      <div class="rise">
+        <h2 class="head">Open to senior data engineering and GenAI platform roles.</h2>
+        <p class="prose" style="margin-bottom:1.85rem">
+          The fastest way to reach me is email — I'll send a detailed résumé and can walk through any of
+          the work above in more depth. Based in Hyderabad, comfortable with hybrid or remote.
+        </p>
+        <div class="contact-lines">
+          <a class="cline" href="mailto:sudhanshutripathi541998@gmail.com">
+            <span class="k mono">Email</span><span class="v">sudhanshutripathi541998@gmail.com</span><span class="go">→</span>
+          </a>
+          <a class="cline" href="https://www.linkedin.com/in/mr-sudhanshu-tripathi" target="_blank" rel="noopener noreferrer">
+            <span class="k mono">LinkedIn</span><span class="v">/in/mr-sudhanshu-tripathi</span><span class="go">↗</span>
+          </a>
+          <a class="cline" href="https://github.com/2sudhanhu" target="_blank" rel="noopener noreferrer">
+            <span class="k mono">GitHub</span><span class="v">github.com/2sudhanhu</span><span class="go">↗</span>
+          </a>
+          <div class="cline">
+            <span class="k mono">Based in</span><span class="v">Hyderabad, India · IST (UTC+5:30)</span><span class="go"></span>
+          </div>
+          <div class="cline">
+            <span class="k mono">Résumé</span><span class="v">Available on request</span><span class="go"></span>
+          </div>
+        </div>
+        <div class="actions" style="margin-top:1.85rem;margin-bottom:0">
+          <a class="btn btn-primary" href="mailto:sudhanshutripathi541998@gmail.com?subject=R%C3%A9sum%C3%A9%20request">Request résumé <span class="arw">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mono">
+      <span>Sudhanshu Tripathi — Senior Data Engineer</span>
+      <span>Databricks · AWS · Terraform · GenAI</span>
+    </footer>
+
+  </div>
+</main>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   Embedding-space field. A real k-nearest-neighbour graph is
+   drawn once and held; a query then fires into it and its own
+   neighbours light up along the edges — the retrieval step at
+   the centre of the RAG work below.
+   ───────────────────────────────────────────────────────────── */
+(function () {
+  var cvs = document.getElementById('field');
+  if (!cvs || !cvs.getContext) return;
+  var ctx = cvs.getContext('2d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var W = 0, H = 0, pts = [], edges = [], query = null;
+  var colBase = '112,126,148', colHi = '255,201,120', edgeA = 0.1;
+  var K = 18, START = null;
+
+  var CLUSTERS = [
+    { x: 0.16, y: 0.30 }, { x: 0.39, y: 0.66 }, { x: 0.65, y: 0.24 },
+    { x: 0.86, y: 0.60 }, { x: 0.29, y: 0.88 }, { x: 0.56, y: 0.08 },
+    { x: 0.95, y: 0.22 }
+  ];
+
+  function readColors() {
+    var cs = getComputedStyle(document.documentElement);
+    var b = cs.getPropertyValue('--dot').trim();
+    var h = cs.getPropertyValue('--dot-hi').trim();
+    var e = parseFloat(cs.getPropertyValue('--edge'));
+    if (b) colBase = b;
+    if (h) colHi = h;
+    if (!isNaN(e)) edgeA = e;
+  }
+
+  function d2(a, b) {
+    var dx = (a.bx - b.bx) * 1.55, dy = a.by - b.by;
+    return dx * dx + dy * dy;
+  }
+
+  function build() {
+    var n = Math.max(170, Math.min(430, Math.round(W * H / 5200)));
+    pts = [];
+    for (var i = 0; i < n; i++) {
+      var c = CLUSTERS[i % CLUSTERS.length];
+      var r = Math.pow(Math.random(), 0.62) * 0.185;
+      var a = Math.random() * Math.PI * 2;
+      pts.push({
+        bx: c.x + Math.cos(a) * r * 1.35,
+        by: c.y + Math.sin(a) * r,
+        ph: Math.random() * Math.PI * 2,
+        sp: 0.20 + Math.random() * 0.42,
+        am: 0.0028 + Math.random() * 0.005,
+        rad: 0.5 + Math.random() * 1.45,
+        dim: 0.18 + Math.random() * 0.5,
+        x: 0, y: 0, hi: 0
+      });
+    }
+
+    // k-NN graph: each point keeps its 2 nearest, deduped into edges
+    var seen = {};
+    edges = [];
+    for (var i2 = 0; i2 < pts.length; i2++) {
+      var best = [-1, -1], bd = [Infinity, Infinity];
+      for (var j = 0; j < pts.length; j++) {
+        if (j === i2) continue;
+        var d = d2(pts[i2], pts[j]);
+        if (d < bd[0]) { bd[1] = bd[0]; best[1] = best[0]; bd[0] = d; best[0] = j; }
+        else if (d < bd[1]) { bd[1] = d; best[1] = j; }
+      }
+      for (var k = 0; k < 2; k++) {
+        var o = best[k];
+        if (o < 0) continue;
+        var key = Math.min(i2, o) + ':' + Math.max(i2, o);
+        if (seen[key]) continue;
+        seen[key] = 1;
+        edges.push([i2, o]);
+      }
+    }
+  }
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = cvs.getBoundingClientRect();
+    W = Math.max(1, Math.round(rect.width));
+    H = Math.max(1, Math.round(rect.height));
+    cvs.width = Math.round(W * dpr);
+    cvs.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+    query = null;
+  }
+
+  function fire(t) {
+    var c = CLUSTERS[Math.floor(Math.random() * CLUSTERS.length)];
+    var qx = c.x + (Math.random() - 0.5) * 0.11;
+    var qy = c.y + (Math.random() - 0.5) * 0.09;
+    var ranked = pts.map(function (p, i) {
+      var dx = (p.bx - qx) * 1.55, dy = p.by - qy;
+      return { i: i, d: dx * dx + dy * dy };
+    }).sort(function (a, b) { return a.d - b.d; });
+    query = { x: qx, y: qy, t0: t, set: ranked.slice(0, K).map(function (r) { return r.i; }) };
+  }
+
+  function positions(t) {
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      p.x = (p.bx + Math.sin(t * p.sp + p.ph) * p.am) * W;
+      p.y = (p.by + Math.cos(t * p.sp * 0.83 + p.ph) * p.am) * H;
+    }
+  }
+
+  function drawEdges() {
+    for (var e = 0; e < edges.length; e++) {
+      var a = pts[edges[e][0]], b = pts[edges[e][1]];
+      var lit = Math.min(a.hi, b.hi);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = lit > 0.02
+        ? 'rgba(' + colHi + ',' + (edgeA + 0.5 * lit).toFixed(3) + ')'
+        : 'rgba(' + colBase + ',' + edgeA.toFixed(3) + ')';
+      ctx.lineWidth = lit > 0.02 ? 1.1 : 1;
+      ctx.stroke();
+    }
+  }
+
+  function drawPoints() {
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.rad * (1 + p.hi * 1.6), 0, Math.PI * 2);
+      ctx.fillStyle = p.hi > 0.02
+        ? 'rgba(' + colHi + ',' + (p.dim * (1 - p.hi) + 0.95 * p.hi).toFixed(3) + ')'
+        : 'rgba(' + colBase + ',' + p.dim.toFixed(3) + ')';
+      ctx.fill();
+    }
+  }
+
+  function draw(now) {
+    if (START === null) START = now;
+    var t = (now - START) / 1000;
+    ctx.clearRect(0, 0, W, H);
+
+    if (!query || t - query.t0 > 6.8) fire(t);
+
+    var age = t - query.t0;
+    var env = age < 0.35 ? age / 0.35 : (age > 4.6 ? Math.max(0, 1 - (age - 4.6) / 1.6) : 1);
+    var inSet = {};
+    for (var s = 0; s < query.set.length; s++) inSet[query.set[s]] = 1;
+
+    positions(t);
+    for (var i = 0; i < pts.length; i++) {
+      pts[i].hi += ((inSet[i] ? env : 0) - pts[i].hi) * 0.05;
+    }
+
+    drawEdges();
+
+    if (env > 0) {
+      var e2 = Math.min(1, age / 1.6);
+      var ease = 1 - Math.pow(1 - e2, 3);
+      ctx.beginPath();
+      ctx.arc(query.x * W, query.y * H, ease * Math.min(W, H) * 0.36, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(' + colHi + ',' + (0.28 * (1 - ease) * env).toFixed(3) + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    drawPoints();
+
+    if (env > 0) {
+      ctx.beginPath();
+      ctx.arc(query.x * W, query.y * H, 2.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + colHi + ',' + env.toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  function still() {
+    ctx.clearRect(0, 0, W, H);
+    positions(0);
+    fire(0);
+    for (var s = 0; s < query.set.length; s++) pts[query.set[s]].hi = 1;
+    drawEdges();
+    drawPoints();
+  }
+
+  function reset() { readColors(); resize(); if (reduced) still(); }
+
+  readColors();
+  resize();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(reset, 170);
+  });
+
+  new MutationObserver(function () { readColors(); if (reduced) still(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  var onScheme = function () { setTimeout(function () { readColors(); if (reduced) still(); }, 0); };
+  if (mq.addEventListener) mq.addEventListener('change', onScheme);
+  else if (mq.addListener) mq.addListener(onScheme);
+
+  if (reduced) still(); else requestAnimationFrame(draw);
+})();
+
+/* ── Sticky bar + scroll progress ──────────────────────────────── */
+(function () {
+  var bar = document.getElementById('bar');
+  var prog = document.getElementById('progress');
+  var hero = document.querySelector('.hero');
+  if (!bar || !hero) return;
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      bar.classList.toggle('show', !es[0].isIntersecting);
+    }, { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
+  }
+
+  var ticking = false;
+  function update() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    if (prog) prog.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+
+/* ── Section reveals ──────────────────────────────────────────── */
+(function () {
+  var els = document.querySelectorAll('.rise');
+  if (!('IntersectionObserver' in window)) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
