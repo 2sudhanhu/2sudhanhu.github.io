@@ -3,12 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Sudhanshu Tripathi — Senior Data Engineer in Hyderabad, India. Databricks, Generative AI and RAG, AWS data platforms, Terraform.">
+<meta name="description" content="Sudhanshu Tripathi — Senior Data Engineer in Hyderabad, India. Databricks, Generative AI and RAG, AWS data platforms, Terraform. Portfolio, experience and selected projects.">
 <meta name="author" content="Sudhanshu Tripathi">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://2sudhanhu.github.io/">
 <meta property="og:type" content="profile">
+<meta property="og:url" content="https://2sudhanhu.github.io/">
+<meta property="og:site_name" content="Sudhanshu Tripathi">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Sudhanshu Tripathi — Senior Data Engineer">
-<meta property="og:description" content="Databricks, Generative AI and RAG, AWS data platforms, Terraform.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%230B0F16%22/><circle cx=%2232%22 cy=%2232%22 r=%228%22 fill=%22%23F1AE52%22/><circle cx=%2232%22 cy=%2232%22 r=%2219%22 fill=%22none%22 stroke=%22%23F1AE52%22 stroke-opacity=%22.45%22 stroke-width=%222%22/></svg>"><title>Sudhanshu Tripathi</title>
+<meta property="og:description" content="Senior Data Engineer in Hyderabad, India. Databricks, Generative AI and RAG, AWS data platforms, Terraform.">
+<meta property="profile:first_name" content="Sudhanshu">
+<meta property="profile:last_name" content="Tripathi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sudhanshu Tripathi — Senior Data Engineer">
+<meta name="twitter:description" content="Senior Data Engineer in Hyderabad, India. Databricks, Generative AI and RAG, AWS data platforms, Terraform.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%230B0F16%22/><circle cx=%2232%22 cy=%2232%22 r=%228%22 fill=%22%23F1AE52%22/><circle cx=%2232%22 cy=%2232%22 r=%2219%22 fill=%22none%22 stroke=%22%23F1AE52%22 stroke-opacity=%22.45%22 stroke-width=%222%22/></svg>"><title>Sudhanshu Tripathi — Senior Data Engineer</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sudhanshu Tripathi",
+  "url": "https://2sudhanhu.github.io/",
+  "jobTitle": "Senior Data Engineer",
+  "description": "Senior Data Engineer working on cloud data platforms, Generative AI and retrieval systems on Databricks and AWS.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "addressCountry": "IN"
+  },
+  "knowsAbout": [
+    "Data Engineering",
+    "Databricks",
+    "Generative AI",
+    "Retrieval-Augmented Generation",
+    "AWS",
+    "Terraform",
+    "Apache Kafka",
+    "PySpark",
+    "Data Lake",
+    "Data Mesh"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/mr-sudhanshu-tripathi",
+    "https://github.com/2sudhanhu"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap">
@@ -667,7 +709,7 @@ footer {
     <section class="block" id="work">
       <div class="gutter"><div class="gutter-sticky">
         <span class="lbl mono">Work</span>
-        <span class="cnt">Eight selected</span>
+        <span class="cnt">Twelve selected</span>
       </div></div>
       <div class="rise">
         <h2 class="head">Things I designed, built, and put in front of people.</h2>
@@ -794,7 +836,67 @@ footer {
             <a class="proj-link" href="https://github.com/2sudhanhu/Jenkins-Intergration-with-weebhooks" target="_blank" rel="noopener noreferrer">View on GitHub <span class="ext">&#8599;</span></a>
           </article>
 
+          <article class="proj">
+            <h3 class="proj-t">WordPress and MySQL on an Amazon EKS cluster</h3>
+            <span class="proj-tag">Kubernetes</span>
+            <p class="proj-d prose">
+              Deployed a WordPress front end with a MySQL backing store onto an EKS cluster — writing the
+              deployment and service manifests, attaching persistent storage so database state survived pod
+              restarts, and exposing WordPress through a load-balanced service while MySQL stayed reachable
+              only from inside the cluster.
+            </p>
+            <ul class="stack">
+              <li>Amazon EKS</li><li>Kubernetes</li><li>WordPress</li>
+              <li>MySQL</li><li>Persistent volumes</li><li>kubectl</li>
+            </ul>
+          </article>
 
+          <article class="proj">
+            <h3 class="proj-t">Multi-tier application infrastructure in Terraform</h3>
+            <span class="proj-tag">Infrastructure as Code</span>
+            <p class="proj-d prose">
+              A set of Terraform builds putting real applications on AWS rather than empty scaffolding:
+              WordPress exposed publicly with MySQL restricted from the public internet; the same stack
+              running on Kubernetes against an Amazon RDS database; and a base layer of EC2 instances with
+              EBS volumes created and mounted, S3 for static assets, and CloudFront in front, sourcing
+              content from GitHub.
+            </p>
+            <ul class="stack">
+              <li>Terraform</li><li>HCL</li><li>AWS EC2</li><li>EBS</li>
+              <li>Amazon RDS</li><li>S3</li><li>CloudFront</li><li>Kubernetes</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Python chatbot fronting cloud and infrastructure tooling</h3>
+            <span class="proj-tag">Automation</span>
+            <p class="proj-d prose">
+              A conversational Python bot that drove real tooling instead of just replying — reaching into
+              AWS, running Ansible playbooks, submitting work to a Hadoop HDFS cluster, and managing Docker
+              containers, alongside everyday conveniences like launching local software and sending a
+              WhatsApp message to a number that was never saved to contacts.
+            </p>
+            <ul class="stack">
+              <li>Python</li><li>AWS</li><li>Ansible</li>
+              <li>Hadoop HDFS</li><li>Docker</li><li>Automation</li>
+            </ul>
+          </article>
+
+          <article class="proj">
+            <h3 class="proj-t">Portable low-cost ECG and pulse oximeter</h3>
+            <span class="proj-tag">Health hardware</span>
+            <p class="proj-d prose">
+              A portable ECG built to undercut the machines already on the market, so rural areas without
+              access to one could catch the early signs of a heart attack. Built around an Arduino Mega 2560
+              with an ECG module, pulse sensor, and electrodes, it measures heart rate, body temperature,
+              and blood oxygen, plots the trace on an on-board display, sends readings over Bluetooth, and
+              raises a buzzer alert — all running off a 9V battery.
+            </p>
+            <ul class="stack">
+              <li>Arduino Mega 2560</li><li>ECG module</li><li>Pulse sensor</li>
+              <li>Bluetooth</li><li>Buzzer</li><li>Electrodes</li><li>9V battery</li>
+            </ul>
+          </article>
 
         </div>
       </div>
@@ -843,13 +945,54 @@ footer {
 
           <div class="role">
             <div class="role-h">
-              <span class="role-co">Cerebrone &amp; others</span>
-              <span class="role-dt">Oct 2020 — Jul 2021</span>
+              <span class="role-co">Cerebrone</span>
+              <span class="role-dt">Mar 2021 — Jul 2021</span>
             </div>
             <div class="role-sub">Cloud &amp; DevOps Engineer · Remote</div>
             <ul class="bul">
-              <li>Built and managed AWS and GCP environments (EC2, IAM, VPC, S3, Lambda, CloudFront, Route 53) and orchestrated containers with Kubernetes, Docker, and Amazon ECS to improve deployment efficiency.</li>
-              <li>Set up Prometheus and Grafana monitoring for real-time application and infrastructure health, and administered Linux servers covering DNS, SSL, Apache, PHP, and MySQL.</li>
+              <li>Built and managed AWS and GCP cloud solutions using EC2, IAM, VPC, S3, and Lambda.</li>
+              <li>Implemented container orchestration using Kubernetes, Docker, and Amazon ECS to optimise deployment efficiency.</li>
+              <li>Implemented CI/CD pipelines with Jenkins, integrated with Terraform for infrastructure as code and Ansible for configuration management.</li>
+              <li>Set up a monitoring solution with Prometheus and Grafana, ensuring real-time tracking of application performance and infrastructure health.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-h">
+              <span class="role-co">Dichroic Labs LLP</span>
+              <span class="role-dt">Jan 2021 — Mar 2021</span>
+            </div>
+            <div class="role-sub">AWS Solution Architect · Mumbai, India</div>
+            <ul class="bul">
+              <li>Managed and monitored all installed systems to sustain the highest level of availability.</li>
+              <li>Focused on cost optimisation across the deployed AWS footprint.</li>
+              <li>Created architecture designs for deployment.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-h">
+              <span class="role-co">NITS Informatics Private Limited</span>
+              <span class="role-dt">Dec 2020 — Jan 2021</span>
+            </div>
+            <div class="role-sub">AWS Solution Architect · Gujarat, India · Part-time</div>
+            <ul class="bul">
+              <li>Provisioned and configured core AWS services — EC2, S3, VPC, and IAM — for client workloads, applying least-privilege roles and security-group rules.</li>
+              <li>Set up Route 53 DNS records and CloudFront distributions to serve content reliably and with lower latency.</li>
+              <li>Configured CloudWatch metrics and alarms for basic health monitoring, and applied S3 lifecycle policies and instance right-sizing to control cost.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-h">
+              <span class="role-co">Sankshit Private Limited</span>
+              <span class="role-dt">Oct 2020 — Dec 2020</span>
+            </div>
+            <div class="role-sub">Server Administrator · Full-time</div>
+            <ul class="bul">
+              <li>Ran daily server operations and managed Linux servers and network infrastructure, configuring DNS, SSL, Apache, PHP, and MySQL.</li>
+              <li>Troubleshot the Linux boot process, user and group management, and host firewall configuration.</li>
+              <li>Configured and managed AWS infrastructure including EC2, S3, CloudFront, VPC, and Route 53.</li>
             </ul>
           </div>
 
